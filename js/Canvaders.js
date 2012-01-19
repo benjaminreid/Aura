@@ -1,9 +1,15 @@
 window.onload = function() {
 
-  var canvas        = 'game',
-      canvasWidth   = 480,
-      canvasHeight  = 640;
+  // setup Aura's configuration
+  var configuration = {
+    canvas: 'game',
+    canvasWidth: 480,
+    canvasHeight: 640
+  };
+  AURA.Config = configuration;
 
-  var renderer = new AURA.Renderer(canvas, canvasWidth, canvasHeight);
+  // create a new renderer
+  var renderer = new AURA.Renderer();
   renderer.init();
+
 };
