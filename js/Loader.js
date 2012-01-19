@@ -1,14 +1,10 @@
 AURA.Loader = function(loader) {
-  this.do;
-  this.assign(loader);
+  this.do = loader;
   this.resourcesToLoad;
   this.resources = [];
 };
 
 AURA.Loader.prototype = {
-  assign: function(loader) {
-    this.do = loader;
-  },
   setResources: function(resources) {
     this.resourcesToLoad = resources;
   },
