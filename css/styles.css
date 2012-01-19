@@ -1,0 +1,9 @@
+body {
+  width: 480px;
+  margin: 20px auto;
+  background: #111;
+}
+
+#game {
+  border: solid 1px #333;
+}
