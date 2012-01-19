@@ -15,7 +15,7 @@ AURA.Renderer.prototype = {
     // get the canvas context
     this.getContext();
 
-    console.log('Renderer initialising: ', this.canvasEl, this.width, this.height, this.ctx);
+    log('Renderer initialising: ', this.canvasEl, this.width, this.height, this.ctx);
   },
   setSize: function(newWidth, newHeight) {
     // store the width and height for the canvas element
@@ -25,7 +25,7 @@ AURA.Renderer.prototype = {
     this.canvasEl.width   = this.width;
     this.canvasEl.height  = this.height;
 
-    console.log('Setting new canvas size: w:' + newWidth + ' h:' + newHeight);
+    log('Setting new canvas size: w:' + newWidth + ' h:' + newHeight);
   },
   getContext: function() {
     this.ctx = (this.canvasEl.getContext) ? this.canvasEl.getContext('2d') : false;
