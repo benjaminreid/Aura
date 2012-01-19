@@ -14,21 +14,21 @@ window.onload = function() {
   renderer.init();
 
   // define a loader and resources to load
-  loader          = new PxLoader(),
+  loader          = new AURA.Loader(new PxLoader),
   resourcesToLoad = ['images/bullet.png', 'images/enemy-ship.png', 'images/player-ship.png', 'images/space-background.jpg'];
 
   // add resources to loader
   for(var r = 0; r < resourcesToLoad.length; r++)
   {
-    resources.push( loader.addImage(resourcesToLoad[r]) );
+    resources.push( loader.do.addImage(resourcesToLoad[r]) );
   }
   // when the loading is complete
-  loader.addCompletionListener(function() {
+  loader.do.addCompletionListener(function() {
     renderer.ctx.drawImage(resources[3],0,0);
     console.log('Resources loaded: ', resources);
   });
   // run the loader
-  loader.start(); 
+  loader.do.start();
 
   console.log('Config setup: ', AURA.Config);
 };
