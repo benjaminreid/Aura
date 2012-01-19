@@ -1,13 +1,15 @@
 window.onload = function() {
-
-  var renderer, loader, resourcesToLoad, resources = [];
-
+  
   // setup Aura's configuration
   AURA.setConfig({
     canvas: 'game',
     canvasWidth: 480,
     canvasHeight: 640
   });
+
+  // create a new screens manager
+  screenManager = new AURA.ScreenManager();
+  screenManager.addScreen(GAME_SCREEN);
 
   // create a new renderer
   renderer = new AURA.Renderer();

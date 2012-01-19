@@ -33,7 +33,8 @@ AURA.Renderer.prototype = {
   render: function() {
     var that = this,
         loop = function() {
-          requestAnimationFrame(loop);  
+          requestAnimationFrame(loop);
+          screenManager.screens[0].loop(that.ctx);  
         };
     loop();
   }
