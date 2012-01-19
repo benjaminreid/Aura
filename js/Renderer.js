@@ -29,5 +29,12 @@ AURA.Renderer.prototype = {
   },
   getContext: function() {
     this.ctx = (this.canvasEl.getContext) ? this.canvasEl.getContext('2d') : false;
+  },
+  render: function() {
+    var that = this,
+        loop = function() {
+          requestAnimationFrame(loop);  
+        };
+    loop();
   }
 };

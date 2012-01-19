@@ -24,7 +24,7 @@ window.onload = function() {
   }
   // when the loading is complete
   loader.do.addCompletionListener(function() {
-    renderer.ctx.drawImage(resources[3],0,0);
+    renderer.render();
     console.log('Resources loaded: ', resources);
   });
   // run the loader
