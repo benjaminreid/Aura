@@ -1,5 +1,7 @@
 window.onload = function() {
 
+  var renderer, loader, resourcesToLoad, resources = [];
+
   // setup Aura's configuration
   AURA.setConfig({
     canvas: 'game',
@@ -8,8 +10,25 @@ window.onload = function() {
   });
 
   // create a new renderer
-  var renderer = new AURA.Renderer();
+  renderer = new AURA.Renderer();
   renderer.init();
+
+  // define a loader and resources to load
+  loader          = new PxLoader(),
+  resourcesToLoad = ['images/bullet.png', 'images/enemy-ship.png', 'images/player-ship.png', 'images/space-background.jpg'];
+
+  // add resources to loader
+  for(var r = 0; r < resourcesToLoad.length; r++)
+  {
+    resources.push( loader.addImage(resourcesToLoad[r]) );
+  }
+  // when the loading is complete
+  loader.addCompletionListener(function() {
+    renderer.ctx.drawImage(resources[3],0,0);
+    console.log('Resources loaded: ', resources);
+  });
+  // run the loader
+  loader.start(); 
 
   console.log('Config setup: ', AURA.Config);
 };
