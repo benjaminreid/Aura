@@ -7,8 +7,10 @@ AURA.Player = function(image) {
   this.position = new AURA.Vector2(0,0);
   this.vel      = new AURA.Vector2(0,0);
   this.temp     = new AURA.Vector2(0,0);
-  this.speed    = 5;
+  this.speed    = 0.5;
   this.drag     = 0.96;
+  this.movingLeft   = false;
+  this.movingRight  = false;
 };
 
 AURA.Player.prototype = {
@@ -17,11 +19,15 @@ AURA.Player.prototype = {
         y = ((AURA.Config.canvasHeight - this.height) - 20),
         that = this;
     that.position.reset(x,y);
-    window.addEventListener('keydown', function(e) { that.addControls(e,that); }, true);  
+    window.addEventListener('keydown', function(e) { that.keyDownHandler(e,that); }, true);
+    window.addEventListener('keyup', function(e) { that.keyUpHandler(e,that); }, true);  
   },
   loop: function(ctx) {
     
-    if ( this.position.x < 0)
+    if ( this.movingLeft ) this.moveLeft();
+    if ( this.movingRight ) this.moveRight();
+
+    if ( this.position.x < 0 )
     {
       this.stopShip(0);
     }
@@ -35,15 +41,24 @@ AURA.Player.prototype = {
     }
     ctx.drawImage(this.image,this.position.x,this.position.y);
   },
-  addControls: function(e,that) {
+  keyDownHandler: function(e,that) {
     switch(e.keyCode) {
       case 37:
-        if ( this.position.x > 0 ) that.moveLeft();
+        if ( this.position.x > 0 ) that.movingLeft = true;
           break;
       case 39:
-        if ( this.position.x < this.widthMax ) that.moveRight();
+        if ( this.position.x < this.widthMax ) that.movingRight = true;
           break;
     }
+  },
+  keyUpHandler: function(e,that) {
+    switch (e.keyCode) {
+      case 37:
+      case 39:
+        that.movingLeft   = false;
+        that.movingRight  = false;
+          break;
+    }  
   },
   moveLeft: function() {
     this.temp.reset(this.speed,0);
