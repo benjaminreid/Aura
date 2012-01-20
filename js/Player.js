@@ -4,13 +4,17 @@ AURA.Player = function(image) {
   this.height   = image.height;
   this.widthMax = (AURA.Config.canvasWidth - this.width);
   this.width2   = this.width/2;
+
   this.position = new AURA.Vector2(0,0);
   this.vel      = new AURA.Vector2(0,0);
   this.temp     = new AURA.Vector2(0,0);
-  this.speed    = 0.5;
+
+  this.speed    = 0.4;
   this.drag     = 0.96;
+
   this.movingLeft   = false;
   this.movingRight  = false;
+  this.isDragging   = false;
 };
 
 AURA.Player.prototype = {
@@ -26,6 +30,7 @@ AURA.Player.prototype = {
     
     if ( this.movingLeft ) this.moveLeft();
     if ( this.movingRight ) this.moveRight();
+    if ( this.isDragging ) this.applyDrag();
 
     if ( this.position.x < 0 )
     {
@@ -44,10 +49,10 @@ AURA.Player.prototype = {
   keyDownHandler: function(e,that) {
     switch(e.keyCode) {
       case 37:
-        if ( this.position.x > 0 ) that.movingLeft = true;
+        if ( this.position.x > 0 ) that.movingLeft = that.isDragging = true;
           break;
       case 39:
-        if ( this.position.x < this.widthMax ) that.movingRight = true;
+        if ( this.position.x < this.widthMax ) that.movingRight = that.isDragging = true;
           break;
     }
   },
@@ -57,6 +62,7 @@ AURA.Player.prototype = {
       case 39:
         that.movingLeft   = false;
         that.movingRight  = false;
+        that.isDragging   = true;
           break;
     }  
   },
@@ -67,6 +73,9 @@ AURA.Player.prototype = {
   moveRight: function() {
     this.temp.reset(this.speed,0);
     this.vel.plusEq(this.temp);
+  },
+  applyDrag: function() {
+    this.vel.multiplyEq(this.drag);  
   },
   stopShip: function(x) {
     this.position.reset(x,this.position.y);
