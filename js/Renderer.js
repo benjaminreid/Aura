@@ -28,14 +28,18 @@ AURA.Renderer.prototype = {
     console.log('Setting new canvas size: w:' + newWidth + ' h:' + newHeight);
   },
   getContext: function() {
+    // get the context of the canvas element, need this to start drawing!
     this.ctx = (this.canvasEl.getContext) ? this.canvasEl.getContext('2d') : false;
   },
   render: function() {
+    // start a loop to render onto the canvas, based on a screen
     var that = this,
+        currentScreen = screenManager.screens[0], 
         loop = function() {
           requestAnimationFrame(loop);
-          screenManager.screens[0].loop(that.ctx);  
+          currentScreen.loop(that.ctx);  
         };
+    currentScreen.init();
     loop();
   }
 };
