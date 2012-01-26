@@ -15,6 +15,9 @@ AURA.Player = function(image) {
   this.movingLeft   = false;
   this.movingRight  = false;
   this.isDragging   = false;
+
+  this.pixelFix = true;
+  this.fixedX   = 0;
 };
 
 AURA.Player.prototype = {
@@ -44,7 +47,11 @@ AURA.Player.prototype = {
     {
       this.position.plusEq(this.vel);
     }
-    ctx.drawImage(this.image,this.position.x,this.position.y);
+    this.drawShip(ctx);
+  },
+  drawShip: function(ctx) {
+    this.fixedX = (this.pixelFix) ? Math.round(this.position.x) : this.position.x;
+    ctx.drawImage(this.image,this.fixedX,this.position.y);
   },
   keyDownHandler: function(e,that) {
     switch(e.keyCode) {
