@@ -43,7 +43,7 @@ AURA.Renderer.prototype = {
           that.ctx.clearRect(0,0,that.width,that.height);
           currentScreen.loop(that.ctx);  
         };
-    currentScreen.init();
-    loop();
+    // pass the loop function to the screen's init
+    currentScreen.init(loop);
   }
 };
