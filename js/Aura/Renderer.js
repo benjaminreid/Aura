@@ -25,6 +25,9 @@ AURA.Renderer.prototype = {
     this.canvasEl.width   = this.width;
     this.canvasEl.height  = this.height;
 
+    AURA.Config.canvasWidth   = this.width;
+    AURA.Config.canvasHeight  = this.height;
+
     console.log('Setting new canvas size: w:' + newWidth + ' h:' + newHeight);
   },
   getContext: function() {
@@ -37,6 +40,7 @@ AURA.Renderer.prototype = {
         currentScreen = AURA.screenManager.screens[0], 
         loop = function() {
           requestAnimationFrame(loop);
+          that.ctx.clearRect(0,0,that.width,that.height);
           currentScreen.loop(that.ctx);  
         };
     currentScreen.init();
