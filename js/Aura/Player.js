@@ -5,6 +5,9 @@ AURA.Player = function(image) {
   this.widthMax = (AURA.Config.canvasWidth - this.width);
   this.width2   = this.width/2;
 
+  this.startY = (AURA.Config.canvasHeight + this.height);
+  this.initY  = ((AURA.Config.canvasHeight - this.height) - 20);
+
   this.position = new AURA.Vector2(0,0);
   this.vel      = new AURA.Vector2(0,0);
   this.temp     = new AURA.Vector2(0,0);
@@ -23,13 +26,13 @@ AURA.Player = function(image) {
 AURA.Player.prototype = {
   init: function() {
     var x = ((AURA.Config.canvasWidth / 2) - this.width2),
-        y = ((AURA.Config.canvasHeight - this.height) - 20),
+        y = this.startY,
         that = this;
     that.position.reset(x,y);
     window.addEventListener('keydown', function(e) { that.keyDownHandler(e,that); }, true);
     window.addEventListener('keyup', function(e) { that.keyUpHandler(e,that); }, true);  
   },
-  loop: function(ctx) {
+  loop: function() {
     
     if ( this.movingLeft ) this.moveLeft();
     if ( this.movingRight ) this.moveRight();
@@ -47,11 +50,11 @@ AURA.Player.prototype = {
     {
       this.position.plusEq(this.vel);
     }
-    this.drawShip(ctx);
+    this.drawShip();
   },
-  drawShip: function(ctx) {
+  drawShip: function() {
     this.fixedX = (this.pixelFix) ? Math.round(this.position.x) : this.position.x;
-    ctx.drawImage(this.image,this.fixedX,this.position.y);
+    AURA.renderer.ctx.drawImage(this.image,this.fixedX,this.position.y);
   },
   keyDownHandler: function(e,that) {
     switch(e.keyCode) {
@@ -88,5 +91,17 @@ AURA.Player.prototype = {
     this.position.reset(x,this.position.y);
     this.vel.reset(0,0);
     this.temp.reset(0,0); 
+  },
+  animateOnScreen: function(index) {
+    if ( this.position.y > this.initY )
+    {
+      this.temp.reset(0,this.speed);
+      this.vel.minusEq(this.temp);
+    }
+    else
+    {
+      this.vel.reset(0,0);
+      GAME_SCREEN.removeLoop(index);
+    }
   }
 };

@@ -10,8 +10,12 @@ GAME_SCREEN.addInit(function( callLoop ) {
   callLoop();
 });
 
+GAME_SCREEN.addLoop(function() {
+  GAME_SCREEN.player.animateOnScreen(0);
+});
+
 // the main game loop
-GAME_SCREEN.addLoop(function(ctx) {
-  ctx.drawImage(AURA.loader.resources[3],0,0);
-  this.player.loop(ctx);
+GAME_SCREEN.addLoop(function() {
+  AURA.renderer.ctx.drawImage(AURA.loader.resources[3],0,0);
+  GAME_SCREEN.player.loop();
 });

@@ -41,7 +41,10 @@ AURA.Renderer.prototype = {
         loop = function() {
           requestAnimationFrame(loop);
           that.ctx.clearRect(0,0,that.width,that.height);
-          currentScreen.loop(that.ctx);  
+          for(var i = 0; i < currentScreen.loop.length; i++)
+          {
+            currentScreen.loop[i]();
+          }  
         };
     // pass the loop function to the screen's init
     currentScreen.init(loop);
