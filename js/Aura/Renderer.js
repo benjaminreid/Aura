@@ -34,7 +34,7 @@ AURA.Renderer.prototype = {
   render: function() {
     // start a loop to render onto the canvas, based on a screen
     var that = this,
-        currentScreen = screenManager.screens[0], 
+        currentScreen = AURA.screenManager.screens[0], 
         loop = function() {
           requestAnimationFrame(loop);
           currentScreen.loop(that.ctx);  
