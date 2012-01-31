@@ -31,6 +31,10 @@ AURA.init = function() {
   this.renderer = new AURA.Renderer();
   this.renderer.init();
 
+  // creat a new ui handler
+  this.ui = new AURA.UI();
+  this.ui.init();
+
   // assign the tween library to aura
   this.tween = TWEEN;
 

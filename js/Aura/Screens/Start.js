@@ -7,6 +7,8 @@ START_SCREEN.addInit(function( callLoop ) {
   this.startBtn = AURA.loader.resources[4];
   this.logo     = AURA.loader.resources[5];
 
+  AURA.ui.addTo(this.startBtn);
+
   callLoop();
 });
 
