@@ -29,18 +29,27 @@ AURA.UI.prototype = {
     that.click.canvasX = e.x - this.offsetLeft,
     that.click.canvasY = e.y - this.offsetTop;
 
-    that.scanUILayer();
+    that.scanUILayer('click');
 
     e.preventDefault();
   },
-  addTo: function(obj) {
+  addTo: function(obj, type, func) {
     this.uiLayer.push(obj);
-    console.log('Added to UI layer', this.uiLayer);
+    obj.type = type;
+    obj.do = func;
+    console.log('Added to UI layer', this.uiLayer, obj);
   },
-  scanUILayer: function() {
+  scanUILayer: function(type) {
     for (var i = 0; i < this.uiLayer.length; i++)
     {
-      console.log('scanning ui layer', this.uiLayer[i].x);
+      if (  (this.click.canvasX >= this.uiLayer[i].x) &&
+            (this.click.canvasX <= (this.uiLayer[i].x + this.uiLayer[i].x) ) &&
+            (this.click.canvasY >= this.uiLayer[i].y) &&
+            (this.click.canvasY <= (this.uiLayer[i].y + this.uiLayer[i].height) ) )
+      {
+        if (this.uiLayer[i].type == type)
+          this.uiLayer[i].do();
+      }
     }
   }
 };
