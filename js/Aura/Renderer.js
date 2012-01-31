@@ -44,7 +44,8 @@ AURA.Renderer.prototype = {
           for(var i = 0; i < currentScreen.loop.length; i++)
           {
             currentScreen.loop[i]();
-          }  
+          }
+          TWEEN.update();  
         };
     // pass the loop function to the screen's init
     currentScreen.init(loop);

@@ -27,7 +27,11 @@ AURA.Player.prototype = {
         that = this;
     that.position.reset(x,y);
     window.addEventListener('keydown', function(e) { that.keyDownHandler(e,that); }, true);
-    window.addEventListener('keyup', function(e) { that.keyUpHandler(e,that); }, true);  
+    window.addEventListener('keyup', function(e) { that.keyUpHandler(e,that); }, true);
+    
+    that.startTween = new TWEEN.Tween(that.position).to({ x: 10, y: 50 }, 2000);
+    that.startTween.easing(TWEEN.Easing.Quadratic.EaseOut);
+    that.startTween.start();
   },
   loop: function() {
     
