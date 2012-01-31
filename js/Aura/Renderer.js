@@ -36,18 +36,17 @@ AURA.Renderer.prototype = {
   },
   render: function() {
     // start a loop to render onto the canvas, based on a screen
-    var that = this,
-        currentScreen = AURA.screenManager.screens[0], 
+    var that = this, 
         loop = function() {
           requestAnimationFrame(loop);
           that.ctx.clearRect(0,0,that.width,that.height);
-          for(var i = 0; i < currentScreen.loop.length; i++)
+          for(var i = 0; i < AURA.screenManager.currentScreen.loop.length; i++)
           {
-            currentScreen.loop[i]();
+            AURA.screenManager.currentScreen.loop[i]();
           }
           AURA.tween.update();  
         };
     // pass the loop function to the screen's init
-    currentScreen.init(loop);
+    AURA.screenManager.currentScreen.init(loop);
   }
 };

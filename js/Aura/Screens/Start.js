@@ -10,7 +10,9 @@ START_SCREEN.addInit(function( callLoop ) {
   this.startBtn.center();
 
   AURA.ui.addTo(this.startBtn, 'click', function() {
-    console.log('start button is clicked');
+    console.log('Start game button clicked');
+    GAME_SCREEN.init( function() { } );
+    AURA.screenManager.changeScreens(1);
   });
 
   this.logo = new AURA.Image(AURA.loader.resources[5]);
