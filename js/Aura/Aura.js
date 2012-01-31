@@ -24,6 +24,7 @@ AURA.init = function() {
 
   // create a new screens manager
   this.screenManager = new AURA.ScreenManager();
+  this.screenManager.addScreen(START_SCREEN);
   this.screenManager.addScreen(GAME_SCREEN);
 
   // create a new renderer
