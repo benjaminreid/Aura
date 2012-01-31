@@ -35,8 +35,8 @@ AURA.Player.prototype = {
     window.addEventListener('keydown', function(e) { that.keyDownHandler(e,that); }, true);
     window.addEventListener('keyup', function(e) { that.keyUpHandler(e,that); }, true);
     
-    that.startTween = new TWEEN.Tween(that.position).to({ x: that.startX, y: that.startY }, 500);
-    that.startTween.easing(TWEEN.Easing.Quadratic.EaseOut);
+    that.startTween = new AURA.tween.Tween(that.position).to({ x: that.startX, y: that.startY }, 500);
+    that.startTween.easing(AURA.tween.Easing.Quadratic.EaseOut);
     that.startTween.start();
   },
   loop: function() {

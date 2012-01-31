@@ -30,6 +30,9 @@ AURA.init = function() {
   this.renderer = new AURA.Renderer();
   this.renderer.init();
 
+  // assign the tween library to aura
+  this.tween = TWEEN;
+
   // define a loader and resources to load
   this.loader = new AURA.Loader(new PxLoader);
   this.loader.queueImages( ['images/bullet.png', 'images/enemy-ship.png', 'images/player-ship.png', 'images/space-background.jpg'] );
