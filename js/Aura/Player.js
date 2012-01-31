@@ -5,9 +5,6 @@ AURA.Player = function(image) {
   this.widthMax = (AURA.Config.canvasWidth - this.width);
   this.width2   = this.width/2;
 
-  this.startY = (AURA.Config.canvasHeight + this.height);
-  this.initY  = ((AURA.Config.canvasHeight - this.height) - 20);
-
   this.position = new AURA.Vector2(0,0);
   this.vel      = new AURA.Vector2(0,0);
   this.temp     = new AURA.Vector2(0,0);
@@ -26,7 +23,7 @@ AURA.Player = function(image) {
 AURA.Player.prototype = {
   init: function() {
     var x = ((AURA.Config.canvasWidth / 2) - this.width2),
-        y = this.startY,
+        y = ((AURA.Config.canvasHeight - this.height) - 20),
         that = this;
     that.position.reset(x,y);
     window.addEventListener('keydown', function(e) { that.keyDownHandler(e,that); }, true);
@@ -91,17 +88,5 @@ AURA.Player.prototype = {
     this.position.reset(x,this.position.y);
     this.vel.reset(0,0);
     this.temp.reset(0,0); 
-  },
-  animateOnScreen: function(index) {
-    if ( this.position.y > this.initY )
-    {
-      this.temp.reset(0,this.speed);
-      this.vel.minusEq(this.temp);
-    }
-    else
-    {
-      this.vel.reset(0,0);
-      GAME_SCREEN.removeLoop(index);
-    }
   }
 };
