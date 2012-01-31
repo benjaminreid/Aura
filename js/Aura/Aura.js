@@ -35,7 +35,7 @@ AURA.init = function() {
 
   // define a loader and resources to load
   this.loader = new AURA.Loader(new PxLoader);
-  this.loader.queueImages( ['images/bullet.png', 'images/enemy-ship.png', 'images/player-ship.png', 'images/space-background.jpg'] );
+  this.loader.queueImages( ['images/bullet.png', 'images/enemy-ship.png', 'images/player-ship.png', 'images/space-background-1.jpg', 'images/btn-play.png', 'images/logo.png'] );
 
   // when the loading is complete
   this.loader.onComplete(function() {
