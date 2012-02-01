@@ -26,7 +26,7 @@ AURA.init = function() {
   this.screenManager = new AURA.ScreenManager();
   this.screenManager.addScreen(START_SCREEN);
   this.screenManager.addScreen(GAME_SCREEN);
-  this.screenManager.changeScreens(0);
+  this.screenManager.changeScreens(1); // change to 0 to boot start screen first, 1 for testing the game
 
   // create a new renderer
   this.renderer = new AURA.Renderer();
