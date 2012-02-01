@@ -21,5 +21,15 @@ AURA.BulletManager.prototype = {
       if (this.bullets[i].alive)
         this.bullets[i].loop();  
     }
+  },
+  fire: function() {
+    for(var i = 0; i < this.maxBullets; i++)
+    {
+      if (this.bullets[i].alive == false)
+      {
+        this.bullets[i].launch();
+        break;
+      }  
+    }
   }   
 };

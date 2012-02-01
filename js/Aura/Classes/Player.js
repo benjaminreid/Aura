@@ -81,6 +81,9 @@ AURA.Player.prototype = {
         that.movingRight  = false;
         that.isDragging   = true;
           break;
+      case 32:
+        GAME_SCREEN.bulletManager.fire();
+        break;
     }  
   },
   moveLeft: function() {
