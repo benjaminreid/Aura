@@ -15,7 +15,7 @@ AURA.EnemyManager = function() {
 };
 AURA.EnemyManager.prototype = {
   init: function() {
-    this.createLevel(1,20);
+    this.createLevel(2,20);
   },
   createEnemies: function() {
     // add bullets to the bullets array
@@ -35,12 +35,21 @@ AURA.EnemyManager.prototype = {
   createLevel: function(numOfWaves, numPerWave) {
     this.waves      = numOfWaves,
     this.perWave    = numPerWave;
- 
+    that = this;
     this.maxEnemies = this.waves * this.perWave;
 
     this.createEnemies();
 
     this.createWave();
+
+    // set a timeout to create new waves, -1 because we start out with creating the first wave
+    for(var w = 0; w < this.waves - 1; w++)
+    {
+      setTimeout(function() {
+        that.currentWave++;
+        that.createWave();
+      }, 8000);
+    }
   },
   createWave: function() {
     var startSection  = (this.currentWave * this.perWave) - this.perWave, // get the point in the array where to start grabbing enemies
