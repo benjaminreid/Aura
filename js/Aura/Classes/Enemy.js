@@ -3,7 +3,7 @@ AURA.Enemy = function() {
   
   this.alive = false;
 
-  this.speed = 1;
+  this.speed = 0.2;
 
   // position and movement
   this.position = new AURA.Vector2(0,0);
@@ -11,10 +11,12 @@ AURA.Enemy = function() {
   this.temp     = new AURA.Vector2(0,0);
 
   this.to = new AURA.Vector2(0,0);
+
+  this.finishedAnimatingOn = false;
 };
 AURA.Enemy.prototype = {
   loop: function() {
-    //this.moveEnemy();
+    if ( this.finishedAnimatingOn ) this.moveEnemy();
     this.render();  
   },
   render: function() {
@@ -30,14 +32,20 @@ AURA.Enemy.prototype = {
     this.position.plusEq(this.vel);
   },
   animateIn: function(x,y) {
+    var that = this;
     // for this, we're only animating y
     this.to.reset(x,y);
     // reset the position to the new x, and fix the y to the top
     this.position.reset(x,0 - (this.image.height));
 
-    var tween = new AURA.tween.Tween(this.position).to({ x: this.to.x, y: this.to.y }, randomRange(250,1000));
+    var tween = new AURA.tween.Tween(this.position).to({ x: this.to.x, y: this.to.y }, 1000);
     tween.easing(AURA.tween.Easing.Quadratic.EaseOut);
     tween.delay(750);
+    tween.onComplete(function() {
+      setTimeout(function() {
+        that.finishedAnimatingOn = true;
+      }, 500);
+    });
     tween.start();
   }
 };
