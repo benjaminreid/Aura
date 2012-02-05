@@ -1,7 +1,7 @@
 AURA.Enemy = function() {
   this.image = new AURA.Image(AURA.loader.resources[1]);
   
-  this.alive = true;
+  this.alive = false;
 
   this.speed = 1;
 
@@ -27,5 +27,8 @@ AURA.Enemy.prototype = {
   moveEnemy: function() {
     // move enemy downwards
     this.position.plusEq(this.vel);
+  },
+  reposition: function(x,y) {
+    this.position.x = x, this.position.y = y;
   }
 };
