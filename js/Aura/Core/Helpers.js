@@ -38,3 +38,8 @@ window.log = function(){
             clearTimeout(id);
         };
 }());
+
+function randomRange(min,max)
+{
+  return Math.random() * (max - min) + min;
+}

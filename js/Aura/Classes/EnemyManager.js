@@ -57,7 +57,7 @@ AURA.EnemyManager.prototype = {
       var x = this.minX + ((enemiesMade%this.perLine) * 45),
           y = this.minY + (this.currentRow * 50);
       
-      this.enemies[w].reposition(x,y);
+      this.enemies[w].animateIn(x,y);
 
       enemiesMade++;
       
