@@ -43,12 +43,14 @@ AURA.EnemyManager.prototype = {
     this.createWave();
 
     // set a timeout to create new waves, -1 because we start out with creating the first wave
+    var tempTime = 0;
     for(var w = 0; w < this.waves - 1; w++)
     {
+      tempTime = 8000 * (w+1);
       setTimeout(function() {
         that.currentWave++;
         that.createWave();
-      }, 8000);
+      }, tempTime);
     }
   },
   createWave: function() {
