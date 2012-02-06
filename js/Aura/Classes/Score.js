@@ -1,14 +1,15 @@
 AURA.Score = function() {
   this.numScore = 0;
   this.text     = new AURA.Text();
+  this.incr     = 10;
 };
 AURA.Score.prototype = {
   init: function() {
     this.numScore = 0;
   },
-  addToScore: function(score)
+  addToScore: function()
   {
-    this.numScore += score;
+    this.numScore += this.incr;
   },
   render: function() {
     var textScore = '';

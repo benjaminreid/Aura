@@ -63,6 +63,7 @@ AURA.Bullet.prototype = {
         {
           enemy.kill();
           that.kill();
+          GAME_SCREEN.score.addToScore();
           break;  
         }
       }
