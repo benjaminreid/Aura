@@ -15,6 +15,9 @@ GAME_SCREEN.addInit(function( callLoop ) {
   this.enemyManager = new AURA.EnemyManager();
   this.enemyManager.init();
 
+  this.score = new AURA.Score();
+  this.score.init();
+
   callLoop();
 });
 
@@ -24,4 +27,5 @@ GAME_SCREEN.addLoop(function() {
   GAME_SCREEN.bulletManager.loop();
   GAME_SCREEN.enemyManager.loop();
   GAME_SCREEN.player.loop();
+  GAME_SCREEN.score.render();
 });
