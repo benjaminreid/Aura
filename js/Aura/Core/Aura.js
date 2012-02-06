@@ -22,6 +22,8 @@ AURA.init = function() {
     canvasHeight: 640
   });
 
+  this.utils = new AURA.Utils();
+
   // create a new screens manager
   this.screenManager = new AURA.ScreenManager();
   this.screenManager.addScreen(START_SCREEN);

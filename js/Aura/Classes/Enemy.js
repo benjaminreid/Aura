@@ -36,7 +36,7 @@ AURA.Enemy.prototype = {
     // for this, we're only animating y
     this.to.reset(x,y);
     // reset the position to the new x, and fix the y to the top
-    this.position.reset(x, (0 - (this.image.height)) - randomRange(50,200) );
+    this.position.reset(x, (0 - (this.image.height)) - AURA.utils.randomRange(50,200) );
 
     var tween = new AURA.tween.Tween(this.position).to({ x: this.to.x, y: this.to.y }, 1000);
     tween.easing(AURA.tween.Easing.Quadratic.EaseOut);

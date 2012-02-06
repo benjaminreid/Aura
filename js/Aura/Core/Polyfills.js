@@ -1,13 +1,3 @@
-// usage: log('inside coolFunc',this,arguments);
-// http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
-window.log = function(){
-  log.history = log.history || [];   // store logs to an array for reference
-  log.history.push(arguments);
-  if(this.console){
-    log( Array.prototype.slice.call(arguments) );
-  }
-};
-
 // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
 // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
 
@@ -38,8 +28,3 @@ window.log = function(){
             clearTimeout(id);
         };
 }());
-
-function randomRange(min,max)
-{
-  return Math.random() * (max - min) + min;
-}
