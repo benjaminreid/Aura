@@ -1,5 +1,6 @@
 AURA.Score = function() {
-  this.numScore   = 0;
+  this.numScore = 0;
+  this.text     = new AURA.Text();
 };
 AURA.Score.prototype = {
   init: function() {
@@ -22,12 +23,7 @@ AURA.Score.prototype = {
     else if (this.numScore >= 1000)
       textScore = this.numScore.toString();
     
-    AURA.renderer.ctx.save();
-    AURA.renderer.ctx.font = '20px OCRAStdRegular';
-    AURA.renderer.ctx.fillStyle = '#ffa94c';
-    AURA.renderer.ctx.fillText('SCORE',20,35);
-    AURA.renderer.ctx.fillStyle = 'white';
-    AURA.renderer.ctx.fillText(textScore,95,35);
-    AURA.renderer.ctx.restore();
+    this.text.write('SCORE',20,35,'#ffa94c','20px OCRAStdRegular');
+    this.text.write(textScore,95,35,'white');
   }
 };
