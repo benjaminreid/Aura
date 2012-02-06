@@ -42,7 +42,7 @@ AURA.UI.prototype = {
   scanUILayer: function(type) {
     for (var i = 0; i < this.uiLayer.length; i++)
     {
-      if ( AURA.utils.squareHitTest({ x: this.click.canvasX, y: this.click.canvasY }, this.uiLayer[i]) )
+      if ( AURA.utils.mouseHit({ x: this.click.canvasX, y: this.click.canvasY }, this.uiLayer[i]) )
       {
         if (this.uiLayer[i].type == type)
           this.uiLayer[i].do();

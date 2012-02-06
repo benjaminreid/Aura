@@ -1,6 +1,9 @@
 AURA.Enemy = function() {
   this.image = new AURA.Image(AURA.loader.resources[1]);
   
+  this.width = this.image.width;
+  this.height = this.image.height;
+
   this.alive = false;
 
   this.speed = 0.2;

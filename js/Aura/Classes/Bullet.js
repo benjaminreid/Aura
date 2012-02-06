@@ -1,5 +1,8 @@
 AURA.Bullet = function() {
   this.image = new AURA.Image(AURA.loader.resources[0]);
+
+  this.width = this.image.width;
+  this.height = this.image.height;
   
   this.alive = false;
 
@@ -16,7 +19,8 @@ AURA.Bullet.prototype = {
     if ( this.checkOffScreen() )
     {
       this.moveBullet();
-      this.render();  
+      this.render();
+      this.checkCollision();
     } 
   },
   launch: function() 
@@ -47,5 +51,21 @@ AURA.Bullet.prototype = {
       return false;
     }
     return true;
+  },
+  checkCollision: function() {
+    var that = this;
+    for (var i = 0; i < GAME_SCREEN.enemyManager.enemies.length; i++)
+    {
+      var enemy = GAME_SCREEN.enemyManager.enemies[i];
+      if (enemy.alive)
+      {
+        if (AURA.utils.squareHitTest(that,enemy))
+        {
+          enemy.kill();
+          that.kill();
+          break;  
+        }
+      }
+    }
   }
 };
