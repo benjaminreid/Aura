@@ -29,6 +29,7 @@ AURA.Enemy.prototype = {
     // reset the bullets position, so it's not still off the screen
     this.alive = false;
     this.position.reset(0,0);
+    GAME_SCREEN.enemyManager.killEnemy();
   },
   moveEnemy: function() {
     // move enemy downwards

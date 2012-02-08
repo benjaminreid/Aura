@@ -12,6 +12,8 @@ AURA.EnemyManager = function() {
 
   this.perLine = 10;
   this.currentRow = 0;
+
+  this.enemiesKilled = 0;
 };
 AURA.EnemyManager.prototype = {
   init: function() {
@@ -78,5 +80,12 @@ AURA.EnemyManager.prototype = {
     }
 
     this.currentRow = 0;
-  }   
+  },
+  killEnemy: function() {
+    this.enemiesKilled++;
+    if (this.enemiesKilled == this.maxEnemies)
+    {
+      console.log('Next level');
+    }
+  }
 };
