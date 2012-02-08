@@ -16,11 +16,14 @@ AURA.Enemy = function() {
   this.to = new AURA.Vector2(0,0);
 
   this.finishedAnimatingOn = false;
+
+  this.bullet = new AURA.EnemyBullet();
 };
 AURA.Enemy.prototype = {
   loop: function() {
     if ( this.finishedAnimatingOn ) this.moveEnemy();
-    this.render();  
+    this.render();
+    this.bullet.loop(); 
   },
   render: function() {
     AURA.renderer.ctx.drawImage(this.image.image, this.position.x, this.position.y);
@@ -51,5 +54,10 @@ AURA.Enemy.prototype = {
       }, 500);
     });
     tween.start();
+  },
+  fireBullet: function()
+  {
+    if(this.finishedAnimatingOn)
+      this.bullet.launch((this.position.x+this.width/2),(this.position.y+this.height));
   }
 };

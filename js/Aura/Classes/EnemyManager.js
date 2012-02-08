@@ -54,6 +54,10 @@ AURA.EnemyManager.prototype = {
         that.createWave();
       }, tempTime);
     }
+
+    setInterval(function() {
+      that.fireAtPlayer();
+    }, 1500);
   },
   createWave: function() {
     var startSection  = (this.currentWave * this.perWave) - this.perWave, // get the point in the array where to start grabbing enemies
@@ -87,5 +91,16 @@ AURA.EnemyManager.prototype = {
     {
       console.log('Next level');
     }
+  },
+  fireAtPlayer: function()
+  {
+    for(var i = Math.round(AURA.utils.randomRange(0,this.enemies.length)); i < this.enemies.length; i++)
+    {
+      if (this.enemies[i].alive && this.enemies[i].bullet.alive == false)
+      {
+        this.enemies[i].fireBullet(); 
+        break;
+      }
+    }  
   }
 };
