@@ -55,6 +55,7 @@ AURA.EnemyBullet.prototype = {
     if (AURA.utils.squareHitTest(this,GAME_SCREEN.player))
     {
       this.kill(); 
+      GAME_SCREEN.lives.looseLife();
     }
   }
 };

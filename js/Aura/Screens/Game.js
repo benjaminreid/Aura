@@ -18,6 +18,9 @@ GAME_SCREEN.addInit(function( callLoop ) {
   this.score = new AURA.Score();
   this.score.init();
 
+  this.lives = new AURA.Lives();
+  this.lives.init();
+
   callLoop();
 });
 
@@ -28,4 +31,5 @@ GAME_SCREEN.addLoop(function() {
   GAME_SCREEN.enemyManager.loop();
   GAME_SCREEN.player.loop();
   GAME_SCREEN.score.render();
+  GAME_SCREEN.lives.render();
 });
