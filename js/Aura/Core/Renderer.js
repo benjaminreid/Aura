@@ -43,7 +43,6 @@ AURA.Renderer.prototype = {
           AURA.screenManager.currentScreen.loop();
           AURA.tween.update();  
         };
-    // pass the loop function to the screen's init
-    AURA.screenManager.currentScreen.init(loop);
+    loop();
   }
 };

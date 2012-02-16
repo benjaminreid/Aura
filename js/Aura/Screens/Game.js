@@ -1,7 +1,7 @@
 var GAME_SCREEN = new AURA.Screen('GAME SCREEN');
 
 // init function is fired before the loop
-GAME_SCREEN.init = function(callLoop) {
+GAME_SCREEN.init = function() {
   console.log('Starting game screen');
 
   this.bg = new AURA.Image(AURA.loader.resources[3]);
@@ -20,8 +20,6 @@ GAME_SCREEN.init = function(callLoop) {
 
   this.lives = new AURA.Lives();
   this.lives.init();
-
-  callLoop();
 };
 
 GAME_SCREEN.destroy = function() {

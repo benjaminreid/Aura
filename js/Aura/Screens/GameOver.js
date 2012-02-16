@@ -1,7 +1,7 @@
 var GAMEOVER_SCREEN = new AURA.Screen('GAMEOVER SCREEN');
 
 // init function is fired before the loop
-GAMEOVER_SCREEN.init = function(callLoop) {
+GAMEOVER_SCREEN.init = function() {
 
   this.bg = new AURA.Image(AURA.loader.resources[3]);
 
@@ -14,8 +14,6 @@ GAMEOVER_SCREEN.init = function(callLoop) {
   });
 
   this.gameOverText = new AURA.Text();
-  
-  callLoop();
 };
 
 // the main game loop
