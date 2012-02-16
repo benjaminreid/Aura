@@ -120,7 +120,7 @@ AURA.EnemyManager.prototype = {
   },
   destroy: function()
   {
-    this.time1 = null;
-    clearInterval(this.time2);
+    this.time1 = clearTimeout(this.time1);
+    this.time2 = clearInterval(this.time2);
   }
 };

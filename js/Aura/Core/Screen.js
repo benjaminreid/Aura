@@ -12,10 +12,6 @@ AURA.Screen.prototype = {
   addInit: function(func) {
     this.init = func;
   },
-  addDestroy: function(func)
-  {
-    this.destroy = func;
-  },
   removeLoop: function(index)
   {
     this.loop.splice(index,1);
