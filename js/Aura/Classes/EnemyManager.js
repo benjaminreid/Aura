@@ -60,8 +60,9 @@ AURA.EnemyManager.prototype = {
     }, 1500);
   },
   createWave: function() {
-    var startSection  = (this.currentWave * this.perWave) - this.perWave, // get the point in the array where to start grabbing enemies
-        enemySection  = (this.perWave * this.currentWave) - 1; // -1 for the 0 index array
+    var section = this.getCurrentSection(),
+        startSection  = section.start,
+        enemySection  = section.end;
     
     var enemiesMade = 0;
      
@@ -94,7 +95,11 @@ AURA.EnemyManager.prototype = {
   },
   fireAtPlayer: function()
   {
-    for(var i = Math.round(AURA.utils.randomRange(0,this.enemies.length)); i < this.enemies.length; i++)
+    var section = this.getCurrentSection(),
+        startSection  = section.start,
+        enemySection  = section.end;
+    // loop from random 0 (start of the array) and max of the current section of enemies, up to the end of the current section
+    for(var i = Math.round(AURA.utils.randomRange(0,enemySection)); i < enemySection; i++)
     {
       if (this.enemies[i].alive && this.enemies[i].bullet.alive == false)
       {
@@ -102,5 +107,15 @@ AURA.EnemyManager.prototype = {
         break;
       }
     }  
+  },
+  getCurrentSection: function()
+  {
+    var startSection  = (this.currentWave * this.perWave) - this.perWave, // get the point in the array where to start grabbing enemies
+        enemySection  = (this.perWave * this.currentWave) - 1; // -1 for the 0 index array
+    // returns the start and end points of the current wave of enemies, pointers for the enemies array
+    return {
+      start: startSection,
+      end: enemySection
+    };
   }
 };
