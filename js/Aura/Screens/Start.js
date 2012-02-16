@@ -1,7 +1,7 @@
 var START_SCREEN = new AURA.Screen('START SCREEN');
 
 // init function is fired before the loop
-START_SCREEN.addInit(function( callLoop ) {
+START_SCREEN.init = function(callLoop) {
   console.log('Starting start screen');
 
   this.bg = new AURA.Image(AURA.loader.resources[3]);
@@ -20,12 +20,12 @@ START_SCREEN.addInit(function( callLoop ) {
   this.logo.setPos(null,105);
 
   callLoop();
-});
+};
 
 // the main game loop
-START_SCREEN.addLoop(function() {
+START_SCREEN.loop = function() {
   that = START_SCREEN;
   that.bg.render();
   that.logo.render();
   that.startBtn.render();
-});
+};

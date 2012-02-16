@@ -1,7 +1,7 @@
 var GAME_SCREEN = new AURA.Screen('GAME SCREEN');
 
 // init function is fired before the loop
-GAME_SCREEN.addInit(function( callLoop ) {
+GAME_SCREEN.init = function(callLoop) {
   console.log('Starting game screen');
 
   this.bg = new AURA.Image(AURA.loader.resources[3]);
@@ -22,7 +22,7 @@ GAME_SCREEN.addInit(function( callLoop ) {
   this.lives.init();
 
   callLoop();
-});
+};
 
 GAME_SCREEN.destroy = function() {
   console.log('////////////////// DESTROY GAME SCREEN', this);
@@ -30,11 +30,11 @@ GAME_SCREEN.destroy = function() {
 };
 
 // the main game loop
-GAME_SCREEN.addLoop(function() {
+GAME_SCREEN.loop = function() {
   GAME_SCREEN.bg.render();
   GAME_SCREEN.bulletManager.loop();
   GAME_SCREEN.enemyManager.loop();
   GAME_SCREEN.player.loop();
   GAME_SCREEN.score.render();
   GAME_SCREEN.lives.render();
-});
+};
