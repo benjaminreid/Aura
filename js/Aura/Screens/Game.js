@@ -24,6 +24,11 @@ GAME_SCREEN.addInit(function( callLoop ) {
   callLoop();
 });
 
+GAME_SCREEN.addDestroy(function() {
+  console.log('This is a custom destroy', this);
+  this.enemyManager.destroy();  
+});
+
 // the main game loop
 GAME_SCREEN.addLoop(function() {
   GAME_SCREEN.bg.render();

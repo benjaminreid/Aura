@@ -1,11 +1,12 @@
 AURA.Lives = function() {
-  this.numLives = 5;
-  this.text     = new AURA.Text();
-  this.incr     = 1;
+  this.initLives  = 1;
+  this.numLives   = this.initLives;
+  this.text       = new AURA.Text();
+  this.incr       = 1;
 };
 AURA.Lives.prototype = {
   init: function() {
-    this.numLives = 5;
+    this.numLives = this.initLives;
   },
   looseLife: function()
   {
@@ -13,6 +14,8 @@ AURA.Lives.prototype = {
     if (this.numLives == 0)
     {
       console.log('Game over');
+      GAMEOVER_SCREEN.init(function() { });
+      AURA.screenManager.changeScreens(2);
     }
   },
   render: function() {

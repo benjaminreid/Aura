@@ -49,13 +49,13 @@ AURA.EnemyManager.prototype = {
     for(var w = 0; w < this.waves - 1; w++)
     {
       tempTime = 8000 * (w+1);
-      setTimeout(function() {
+      this.time1 = setTimeout(function() {
         that.currentWave++;
         that.createWave();
       }, tempTime);
     }
 
-    setInterval(function() {
+    this.time2 = setInterval(function() {
       that.fireAtPlayer();
     }, 1500);
   },
@@ -117,5 +117,10 @@ AURA.EnemyManager.prototype = {
       start: startSection,
       end: enemySection
     };
+  },
+  destroy: function()
+  {
+    this.time1 = null;
+    clearInterval(this.time2);
   }
 };

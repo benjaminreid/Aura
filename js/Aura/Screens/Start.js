@@ -22,6 +22,10 @@ START_SCREEN.addInit(function( callLoop ) {
   callLoop();
 });
 
+START_SCREEN.addDestroy(function() {
+  console.log('This is a custom destroy', this);  
+});
+
 // the main game loop
 START_SCREEN.addLoop(function() {
   that = START_SCREEN;
