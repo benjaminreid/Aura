@@ -1,4 +1,4 @@
-var GAMEOVER_SCREEN = new AURA.Screen();
+var GAMEOVER_SCREEN = new AURA.Screen('GAMEOVER SCREEN');
 
 // init function is fired before the loop
 GAMEOVER_SCREEN.addInit(function( callLoop ) {

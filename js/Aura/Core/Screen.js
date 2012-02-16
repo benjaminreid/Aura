@@ -1,7 +1,8 @@
-AURA.Screen = function() {
+AURA.Screen = function(name) {
+  this.name = name;
   this.loop = new Array();
   this.init;
-  this.destroy = function() { console.log('Destroying', this); };
+  this.destroy = function() { console.log('Destroying', this.name); };
 };
 
 AURA.Screen.prototype = {

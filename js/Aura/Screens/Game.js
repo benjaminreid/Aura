@@ -1,4 +1,4 @@
-var GAME_SCREEN = new AURA.Screen();
+var GAME_SCREEN = new AURA.Screen('GAME SCREEN');
 
 // init function is fired before the loop
 GAME_SCREEN.addInit(function( callLoop ) {
@@ -22,11 +22,6 @@ GAME_SCREEN.addInit(function( callLoop ) {
   this.lives.init();
 
   callLoop();
-});
-
-GAME_SCREEN.addDestroy(function() {
-  console.log('This is a custom destroy', this);
-  this.enemyManager.destroy();  
 });
 
 // the main game loop
