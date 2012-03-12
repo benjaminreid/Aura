@@ -14,6 +14,7 @@ AURA.Lives.prototype = {
     if (this.numLives == 0)
     {
       console.log('Game over');
+      GAME_SCREEN.destroy();
       GAMEOVER_SCREEN.init();
       AURA.screenManager.changeScreens(2);
     }

@@ -122,5 +122,20 @@ AURA.EnemyManager.prototype = {
   {
     this.time1 = clearTimeout(this.time1);
     this.time2 = clearInterval(this.time2);
+    this.maxEnemies = 0;
+    this.enemies    = [];
+
+    this.minX = 25;
+    this.minY = 50;
+
+    this.waves = 0;
+    this.perWave = 0;
+
+    this.currentWave = 1;
+
+    this.perLine = 10;
+    this.currentRow = 0;
+
+    this.enemiesKilled = 0;
   }
 };

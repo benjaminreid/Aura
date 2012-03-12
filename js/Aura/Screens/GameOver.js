@@ -10,6 +10,7 @@ GAMEOVER_SCREEN.init = function() {
 
   AURA.ui.addTo(this.restartBtn, 'click', function() {
     console.log('Restart game button clicked');
+    GAME_SCREEN.init();
     AURA.screenManager.changeScreens(1);
   });
 

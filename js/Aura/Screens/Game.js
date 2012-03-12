@@ -24,7 +24,19 @@ GAME_SCREEN.init = function() {
 
 GAME_SCREEN.destroy = function() {
   console.log('////////////////// DESTROY GAME SCREEN', this);
-  this.enemyManager.destroy();  
+  this.enemyManager.destroy(); 
+  this.enemyManager = null; 
+  this.bg = null;
+  
+  this.player = null;
+
+  this.bulletManager = null;
+
+  this.enemyManager = null;
+
+  this.score = null;
+
+  this.lives = null; 
 };
 
 // the main game loop
