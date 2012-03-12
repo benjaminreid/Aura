@@ -27,11 +27,15 @@ AURA.EnemyManager.prototype = {
     }
   },
   loop: function() {
+    var _this = this;
     // loop through the bullets array and call their loop if they are alive 
     for(var i = 0; i < this.maxEnemies; i++)
     {
       if (this.enemies[i].alive)
         this.enemies[i].loop();  
+    }
+    if ( AURA.time % 60 == 0 ) {
+      _this.fireAtPlayer();
     }
   },
   createLevel: function(numOfWaves, numPerWave) {
@@ -54,10 +58,6 @@ AURA.EnemyManager.prototype = {
         that.createWave();
       }, tempTime);
     }
-
-    this.time2 = setInterval(function() {
-      that.fireAtPlayer();
-    }, 1500);
   },
   createWave: function() {
     var section = this.getCurrentSection(),
@@ -121,7 +121,6 @@ AURA.EnemyManager.prototype = {
   destroy: function()
   {
     this.time1 = clearTimeout(this.time1);
-    this.time2 = clearInterval(this.time2);
     this.maxEnemies = 0;
     this.enemies    = [];
 

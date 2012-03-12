@@ -41,7 +41,8 @@ AURA.Renderer.prototype = {
           requestAnimationFrame(loop);
           that.ctx.clearRect(0,0,that.width,that.height);
           AURA.screenManager.currentScreen.loop();
-          AURA.tween.update();  
+          AURA.tween.update();
+          AURA.time++;
         };
     loop();
   }

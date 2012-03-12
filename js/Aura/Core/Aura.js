@@ -14,6 +14,7 @@ AURA.init = function() {
   console.log('Starting AURA');
 
   var that = this;
+  this.time = 0;
   
   // setup Aura's configuration
   this.setConfig({
